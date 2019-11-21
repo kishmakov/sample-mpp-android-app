@@ -1,4 +1,4 @@
-rootProject.name = "sample-mpp-android-app"
+rootProject.name = "sample-mpp-app"
 
 gradleWrapper()
 
@@ -7,7 +7,8 @@ pluginManagement {
         Kotlin(
             kotlin("multiplatform"),
             kotlin("android.extensions"),
-            kotlin("plugin.serialization")
+            kotlin("plugin.serialization"),
+            kotlin("native.cocoapods")
         )
         Android.Plugin(
             id("com.android.application"),

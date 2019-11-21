@@ -9,7 +9,8 @@ import io.ktor.client.request.url
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
-import weatherApiKey
+
+const val weatherApiKey = "7e3242792fe32625ab5258306002cea5"
 
 class WeatherApi(private val engine: HttpClientEngine) {
     companion object {
@@ -20,7 +21,11 @@ class WeatherApi(private val engine: HttpClientEngine) {
     data class Wind(val speed: Float, val deg: Float)
 
     @Serializable
-    data class Weather(val wind: Wind, val visibility: String, val name: String)
+    data class Weather(val wind: Wind, val visibility: String, val name: String) {
+        override fun toString(): String {
+            return "$name $visibility $wind"
+        }
+    }
 
     @UseExperimental(UnstableDefault::class)
     private val client by lazy {
